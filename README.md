@@ -27,7 +27,7 @@ Ainda em fase de produção.
 - JPA/Hibernate
 - Maven
 ## Front end
-- Java FX
+- Java Swing
 
 ## Implantação em produção
 - Back end: 
