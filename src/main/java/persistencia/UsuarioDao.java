@@ -44,7 +44,7 @@ public class UsuarioDao {
 	 
 	try { 
 		PreparedStatement statement = connection.prepareStatement(
-	  "UPDATE usuario SET nome=?,login=?,senha=?,tipousuario=? WHERE id_ususario=?");
+	  "UPDATE usuario SET nome=?,login=?,senha=?,tipousuario=? WHERE id_usuario=?");
 	  statement.setString(1,usuario.getNome()); 
 	  statement.setString(2,usuario.getSenha()); 
 	  statement.setString(3,usuario.getLogin());
@@ -58,11 +58,11 @@ public class UsuarioDao {
 	  }
 	}
 
-	/*
 	
-	public void deletePessoa(int id) {
+	public void deleteUsuario(int id) {
 		try {
-			PreparedStatement statement = connection.prepareStatement("DELETE from pessoa WHERE id_pessoa=?");
+			PreparedStatement statement = connection.prepareStatement(
+					"DELETE from usuario WHERE id_usuario=?");
 			statement.setInt(1, id);
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -71,7 +71,7 @@ public class UsuarioDao {
 	}
 
 	// Resolver Depois descobrir como realizar pesquisa no bd pelo ENUM public
-	Pessoa getPessoaById(int id) { Pessoa pessoa =null; TipoRenda renda = null;
+	/*Pessoa getPessoaById(int id) { Pessoa pessoa =null; TipoRenda renda = null;
 	  
 	  try { PreparedStatement statement = connection.prepareStatement(
 	  "SELECT *FROM pessoa WHERE id_pessoa = ?"); statement.setInt(1, id);
