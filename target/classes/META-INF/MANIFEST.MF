@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: Fagner
-Build-Jdk: 17.0.3
+Built-By: guilh
+Build-Jdk: 1.8.0_261
 Created-By: Maven Integration for Eclipse
 
