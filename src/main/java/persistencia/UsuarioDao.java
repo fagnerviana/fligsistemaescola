@@ -2,9 +2,11 @@ package persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import modelo.Usuario;
+import modelo.TipoUsuario;
 
 public class UsuarioDao {
 
@@ -70,26 +72,33 @@ public class UsuarioDao {
 		}
 	}
 
-	// Resolver Depois descobrir como realizar pesquisa no bd pelo ENUM public
-	/*Pessoa getPessoaById(int id) { Pessoa pessoa =null; TipoRenda renda = null;
-	  
-	  try { PreparedStatement statement = connection.prepareStatement(
-	  "SELECT *FROM pessoa WHERE id_pessoa = ?"); statement.setInt(1, id);
-	  ResultSet resultSet = statement.executeQuery(); if (resultSet.next()) {
-	  
-	  
-	  pessoa = new Pessoa(); pessoa.setId(resultSet.getInt("id_pessoa"));
-	  pessoa.setNome(resultSet.getString("nome"));
-	  pessoa.setEmail(resultSet.getString("email"));
-	  pessoa.setRenda(resultSet.getDouble("renda"));
-	  //pessoa.setTiporenda(TipoRenda.values().hashCode(TipoRenda.getTipoRendaInt(
-	  resultSet.getInt("renda")));
-	  //pessoa.se(TipoRenda.getTipoRendaInt(resultSet.getInt("renda")));
-	  pessoa.setTiporenda(TipoRenda.getBy(resultSet.getInt("id_tiporenda")));
-	  pessoa.setDependentes(resultSet.getInt("dependentes"));
-	  
-	 } } catch (SQLException e) { e.printStackTrace(); } return pessoa; }
-	 
-	 */
+	
+	public Usuario getUsuarioById(int id) {
 
+		// Necessario instanciar usuario e tipousuario
+		Usuario usuario = null;
+		TipoUsuario tipousuario = null;
+
+		try {
+			//Da o comando SELECT *FROM usuario WHERE id_usuario 
+			PreparedStatement statement = connection.prepareStatement("SELECT *FROM usuario WHERE id_usuario = ?");
+			statement.setInt(1, id);
+			ResultSet resultSet = statement.executeQuery();
+
+			if (resultSet.next()) {
+
+				usuario = new Usuario();
+				usuario.setId(resultSet.getInt("id_usuario"));
+				usuario.setNome(resultSet.getString("nome"));
+				usuario.setLogin(resultSet.getString("login"));
+				usuario.setSenha(resultSet.getString("senha"));
+				usuario.setTipoUsuario(TipoUsuario.getDescricao(resultSet.getString("tipousuario")));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return usuario;
+	}
+	
 }

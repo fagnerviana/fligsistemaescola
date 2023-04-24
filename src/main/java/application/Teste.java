@@ -8,6 +8,16 @@ public class Teste {
 
 	public static void main(String[] args) throws ClassNotFoundException {
 		
+		// Testando o metodo getUsuarioById informando o ID:
+		Usuario usuario = new Usuario();
+		usuario.setId(2);
+
+		UsuarioDao usuarioDao = new UsuarioDao();
+		System.out.println(usuarioDao.getUsuarioById(usuario.getId()));
+		
+		
+		
+		/*
 		
 		//Testando o metodo update UsuarioDao inserindo o seu ID:
 				Usuario usuario = new Usuario();
@@ -19,7 +29,7 @@ public class Teste {
 
 		
 		
-		/*
+		
 		
 		//Testando o metodo update UsuarioDao inserindo o seu ID:
 		Usuario usuario = new Usuario();
