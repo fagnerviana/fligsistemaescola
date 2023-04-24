@@ -19,7 +19,7 @@ Tela para relacionar a matéria ao professor
 Ainda em fase de produção.
 
 ## Modelo conceitual
-![Modelo Conceitual](https://github.com/fagnerviana/fligsistemaescola/blob/main/src/main/java/assets/modelodb.png)
+![Modelo Conceitual](https://github.com/fagnerviana/fligsistemaescola/blob/main/src/main/java/assets/banco_dados.png)
 
 # Tecnologias utilizadas
 ## Back end
