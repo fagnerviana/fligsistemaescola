@@ -92,7 +92,7 @@ public class UsuarioDao {
 				usuario.setNome(resultSet.getString("nome"));
 				usuario.setLogin(resultSet.getString("login"));
 				usuario.setSenha(resultSet.getString("senha"));
-				usuario.setTipoUsuario(TipoUsuario.getDescricao(resultSet.getString("tipousuario")));
+				usuario.setTipoUsuario(TipoUsuario.getByString(resultSet.getString("tipousuario")));
 
 			}
 		} catch (SQLException e) {
