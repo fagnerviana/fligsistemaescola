@@ -11,6 +11,8 @@ import javax.swing.JList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.border.EtchedBorder;
+import javax.swing.JButton;
 
 public class CadastroFuncionarios extends JFrame {
 
@@ -43,7 +45,7 @@ public class CadastroFuncionarios extends JFrame {
 	 */
 	public CadastroFuncionarios() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 405, 396);
+		setBounds(100, 100, 536, 363);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -120,6 +122,35 @@ public class CadastroFuncionarios extends JFrame {
 		textField_4.setColumns(10);
 		textField_4.setBounds(267, 246, 95, 20);
 		contentPane.add(textField_4);
+		
+		JLabel lblCDFuncionarios = new JLabel("Cadastro de Funcionarios");
+		lblCDFuncionarios.setBounds(16, 11, 169, 14);
+		contentPane.add(lblCDFuncionarios);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel.setBounds(10, 34, 377, 285);
+		contentPane.add(panel);
+		
+		JButton btnNovo = new JButton("Novo");
+		btnNovo.setBounds(415, 34, 89, 23);
+		contentPane.add(btnNovo);
+		
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setBounds(415, 168, 89, 23);
+		contentPane.add(btnSalvar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setBounds(415, 136, 89, 23);
+		contentPane.add(btnExcluir);
+		
+		JButton btnEditar = new JButton("Editar");
+		btnEditar.setBounds(415, 68, 89, 23);
+		contentPane.add(btnEditar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(415, 102, 89, 23);
+		contentPane.add(btnCancelar);
 		
 	}
 }
