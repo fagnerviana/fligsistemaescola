@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JList;
 
 public class TelaPrincipal extends JFrame {
 
@@ -46,8 +47,14 @@ public class TelaPrincipal extends JFrame {
 		JMenu mnMenu = new JMenu("Menu");
 		menuBar.add(mnMenu);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Lan\u00E7amento de notas");
-		mnMenu.add(mntmNewMenuItem);
+		JMenu mnLancamentos = new JMenu("Lan\u00E7amentos");
+		mnMenu.add(mnLancamentos);
+		
+		JMenuItem mntmNotas = new JMenuItem("Notas");
+		mnLancamentos.add(mntmNotas);
+		
+		JMenuItem mntmPresenca = new JMenuItem("Presen\u00E7a");
+		mnLancamentos.add(mntmPresenca);
 		
 		JMenu mnNewMenu_1 = new JMenu("Cadastros");
 		mnMenu.add(mnNewMenu_1);

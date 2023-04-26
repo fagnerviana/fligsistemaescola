@@ -19,6 +19,7 @@ public class CadastroAluno extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JTextField textPesquisa;
 
 	/**
 	 * Launch the application.
@@ -41,7 +42,7 @@ public class CadastroAluno extends JFrame {
 	 */
 	public CadastroAluno() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 567, 242);
+		setBounds(100, 100, 577, 379);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -86,7 +87,7 @@ public class CadastroAluno extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel.setBounds(10, 39, 411, 117);
+		panel.setBounds(10, 39, 411, 145);
 		contentPane.add(panel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Cadastro de Alunos");
@@ -112,5 +113,19 @@ public class CadastroAluno extends JFrame {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(449, 100, 83, 23);
 		contentPane.add(btnCancelar);
+		
+		JLabel lblNomeP = new JLabel("Nome:");
+		lblNomeP.setBounds(28, 198, 46, 14);
+		contentPane.add(lblNomeP);
+		
+		textPesquisa = new JTextField();
+		textPesquisa.setColumns(10);
+		textPesquisa.setBounds(76, 195, 325, 20);
+		contentPane.add(textPesquisa);
+		
+		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setBounds(449, 195, 83, 23);
+		contentPane.add(btnPesquisar);
+		
 	}
 }

@@ -18,6 +18,8 @@ public class CadastroTurma extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -47,27 +49,23 @@ public class CadastroTurma extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Turma:");
-		lblNewLabel.setBounds(27, 49, 46, 14);
-		contentPane.add(lblNewLabel);
-		
 		JLabel lblPerodo = new JLabel("Per\u00EDodo:");
-		lblPerodo.setBounds(198, 49, 46, 14);
+		lblPerodo.setBounds(208, 49, 46, 14);
 		contentPane.add(lblPerodo);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Manh\u00E3");
 		buttonGroup.add(rdbtnNewRadioButton);
-		rdbtnNewRadioButton.setBounds(250, 45, 109, 23);
+		rdbtnNewRadioButton.setBounds(250, 45, 63, 23);
 		contentPane.add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnTarde = new JRadioButton("Tarde");
 		buttonGroup.add(rdbtnTarde);
-		rdbtnTarde.setBounds(250, 70, 109, 23);
+		rdbtnTarde.setBounds(250, 70, 63, 23);
 		contentPane.add(rdbtnTarde);
 		
 		JRadioButton rdbtnNoite = new JRadioButton("Noite");
 		buttonGroup.add(rdbtnNoite);
-		rdbtnNoite.setBounds(250, 96, 109, 23);
+		rdbtnNoite.setBounds(323, 45, 57, 23);
 		contentPane.add(rdbtnNoite);
 		
 		JLabel lblProfessor = new JLabel("Professor:");
@@ -103,7 +101,7 @@ public class CadastroTurma extends JFrame {
 		contentPane.add(lblMatria_3);
 		
 		textField = new JTextField();
-		textField.setBounds(83, 46, 86, 20);
+		textField.setBounds(112, 46, 86, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -127,11 +125,6 @@ public class CadastroTurma extends JFrame {
 		lblNewLabel_1.setBounds(10, 11, 142, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel.setBounds(10, 36, 371, 200);
-		contentPane.add(panel);
-		
 		JButton btnNovo = new JButton("Novo");
 		btnNovo.setBounds(402, 36, 89, 23);
 		contentPane.add(btnNovo);
@@ -151,5 +144,32 @@ public class CadastroTurma extends JFrame {
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.setBounds(402, 173, 89, 23);
 		contentPane.add(btnSalvar);
+		
+		JLabel lblNewLabel = new JLabel("Curso:");
+		lblNewLabel.setBounds(27, 49, 34, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_2 = new JLabel("Turma:");
+		lblNewLabel_2.setBounds(27, 74, 34, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(112, 74, 86, 20);
+		contentPane.add(textField_1);
+		
+		JLabel lblCargaHoraria = new JLabel("Carga Horaria:");
+		lblCargaHoraria.setBounds(27, 102, 73, 14);
+		contentPane.add(lblCargaHoraria);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(112, 99, 86, 20);
+		contentPane.add(textField_2);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel.setBounds(10, 36, 371, 200);
+		contentPane.add(panel);
 	}
 }

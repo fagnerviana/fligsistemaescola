@@ -45,7 +45,7 @@ public class CadastroFuncionarios extends JFrame {
 	 */
 	public CadastroFuncionarios() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 536, 363);
+		setBounds(100, 100, 539, 362);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -129,7 +129,7 @@ public class CadastroFuncionarios extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel.setBounds(10, 34, 377, 285);
+		panel.setBounds(10, 34, 365, 285);
 		contentPane.add(panel);
 		
 		JButton btnNovo = new JButton("Novo");
