@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +25,8 @@ public class Turma {
 	private int id;
 	private String codigo;
 	private Date data;
+	
+	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 	
 
 }

@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import modelo.Curso;
+import modelo.Turma;
 
 public class Teste {
 
@@ -18,10 +18,9 @@ public class Teste {
 		  
 		  
 		  em.getTransaction().begin(); //Persist metodo para salvar no banco de dados
-		  em.persist(Curso.builder()		  
-		  .nome("Curso Java Back-End")
-		  .cargaHorariaTotal(240)
-		  .valor(500)
+		  em.persist(Turma.builder()		  
+		  .codigo("6B")
+		  .data(01-02-2023)
 		  .build());
 		  em.getTransaction().commit();
 		  

@@ -100,7 +100,7 @@ public class LoginSenha extends JFrame {
 
 		JLabel lblImagem = new JLabel("");
 		lblImagem.setIcon(
-				new ImageIcon("C:\\Users\\IS&MA\\Documents\\Projetos Java\\fligsistemaescola_bkp\\Imagens\\transferir.jpeg"));
+				new ImageIcon("C:\\Users\\IS&MA\\Documents\\Projetos Java\\fligsistemaescola\\Imagens\\transferir.jpeg"));
 		lblImagem.setBounds(0, -17, 351, 211);
 		contentPane.add(lblImagem);
 	}

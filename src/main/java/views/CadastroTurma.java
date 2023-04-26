@@ -10,6 +10,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.ButtonGroup;
+import javax.swing.border.EtchedBorder;
+import javax.swing.JButton;
 
 public class CadastroTurma extends JFrame {
 
@@ -38,7 +40,7 @@ public class CadastroTurma extends JFrame {
 	 */
 	public CadastroTurma() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 292);
+		setBounds(100, 100, 523, 309);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -46,79 +48,108 @@ public class CadastroTurma extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Turma:");
-		lblNewLabel.setBounds(10, 11, 46, 14);
+		lblNewLabel.setBounds(27, 49, 46, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblPerodo = new JLabel("Per\u00EDodo:");
-		lblPerodo.setBounds(10, 49, 46, 14);
+		lblPerodo.setBounds(198, 49, 46, 14);
 		contentPane.add(lblPerodo);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Manh\u00E3");
 		buttonGroup.add(rdbtnNewRadioButton);
-		rdbtnNewRadioButton.setBounds(60, 45, 109, 23);
+		rdbtnNewRadioButton.setBounds(250, 45, 109, 23);
 		contentPane.add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnTarde = new JRadioButton("Tarde");
 		buttonGroup.add(rdbtnTarde);
-		rdbtnTarde.setBounds(60, 71, 109, 23);
+		rdbtnTarde.setBounds(250, 70, 109, 23);
 		contentPane.add(rdbtnTarde);
 		
 		JRadioButton rdbtnNoite = new JRadioButton("Noite");
 		buttonGroup.add(rdbtnNoite);
-		rdbtnNoite.setBounds(60, 97, 109, 23);
+		rdbtnNoite.setBounds(250, 96, 109, 23);
 		contentPane.add(rdbtnNoite);
 		
 		JLabel lblProfessor = new JLabel("Professor:");
-		lblProfessor.setBounds(10, 127, 63, 14);
+		lblProfessor.setBounds(27, 127, 63, 14);
 		contentPane.add(lblProfessor);
 		
 		JLabel lblMatria = new JLabel("Mat\u00E9ria:");
-		lblMatria.setBounds(276, 127, 63, 14);
+		lblMatria.setBounds(329, 127, 63, 14);
 		contentPane.add(lblMatria);
 		
 		JLabel lblProfessor_1 = new JLabel("Professor:");
-		lblProfessor_1.setBounds(10, 152, 63, 14);
+		lblProfessor_1.setBounds(27, 152, 63, 14);
 		contentPane.add(lblProfessor_1);
 		
 		JLabel lblMatria_1 = new JLabel("Mat\u00E9ria:");
-		lblMatria_1.setBounds(276, 152, 63, 14);
+		lblMatria_1.setBounds(329, 152, 63, 14);
 		contentPane.add(lblMatria_1);
 		
 		JLabel lblProfessor_2 = new JLabel("Professor:");
-		lblProfessor_2.setBounds(10, 178, 63, 14);
+		lblProfessor_2.setBounds(27, 177, 63, 14);
 		contentPane.add(lblProfessor_2);
 		
 		JLabel lblMatria_2 = new JLabel("Mat\u00E9ria:");
-		lblMatria_2.setBounds(276, 178, 63, 14);
+		lblMatria_2.setBounds(329, 177, 63, 14);
 		contentPane.add(lblMatria_2);
 		
 		JLabel lblProfessor_3 = new JLabel("Professor:");
-		lblProfessor_3.setBounds(10, 203, 63, 14);
+		lblProfessor_3.setBounds(27, 202, 63, 14);
 		contentPane.add(lblProfessor_3);
 		
 		JLabel lblMatria_3 = new JLabel("Mat\u00E9ria:");
-		lblMatria_3.setBounds(276, 203, 63, 14);
+		lblMatria_3.setBounds(329, 202, 63, 14);
 		contentPane.add(lblMatria_3);
 		
 		textField = new JTextField();
-		textField.setBounds(70, 8, 86, 20);
+		textField.setBounds(83, 46, 86, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(70, 123, 174, 22);
+		comboBox.setBounds(112, 123, 174, 22);
 		contentPane.add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(70, 148, 174, 22);
+		comboBox_1.setBounds(112, 148, 174, 22);
 		contentPane.add(comboBox_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(70, 174, 174, 22);
+		comboBox_2.setBounds(112, 173, 174, 22);
 		contentPane.add(comboBox_2);
 		
 		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(70, 199, 174, 22);
+		comboBox_3.setBounds(112, 198, 174, 22);
 		contentPane.add(comboBox_3);
+		
+		JLabel lblNewLabel_1 = new JLabel("Cadastro de turmas");
+		lblNewLabel_1.setBounds(10, 11, 142, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel.setBounds(10, 36, 371, 200);
+		contentPane.add(panel);
+		
+		JButton btnNovo = new JButton("Novo");
+		btnNovo.setBounds(402, 36, 89, 23);
+		contentPane.add(btnNovo);
+		
+		JButton btnEditar = new JButton("Editar");
+		btnEditar.setBounds(402, 70, 89, 23);
+		contentPane.add(btnEditar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(402, 104, 89, 23);
+		contentPane.add(btnCancelar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setBounds(402, 138, 89, 23);
+		contentPane.add(btnExcluir);
+		
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setBounds(402, 173, 89, 23);
+		contentPane.add(btnSalvar);
 	}
 }
