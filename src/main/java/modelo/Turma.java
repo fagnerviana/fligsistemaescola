@@ -1,5 +1,7 @@
 package modelo;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,12 +17,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Disciplina {
+public class Turma {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String nome;
-	private int cargaHoraria;
+	private String codigo;
+	private Date data;
 	
+
 }
