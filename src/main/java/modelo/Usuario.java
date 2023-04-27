@@ -1,11 +1,17 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,4 +33,12 @@ public class Usuario {
 	private String login;
 	@Enumerated(EnumType.STRING)
 	private TipoUsuario tipoUsuario;
+	
+	
+	@ManyToMany
+	@JoinTable(name="turma_has_professor",
+	joinColumns = @JoinColumn(name="idprofessor"),
+	inverseJoinColumns = @JoinColumn(name="idturma"))
+	private List<Turma> listaTurma = new ArrayList();
+	
 }
