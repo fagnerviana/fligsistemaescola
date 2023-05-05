@@ -2,8 +2,7 @@ package persistencia;
 
 import java.sql.*;
 
-
-import java.sql.*;
+//Esta classe não esta sendo utilizada
 
 public class Conecta {
 

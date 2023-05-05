@@ -5,21 +5,30 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.LoginSenhaController;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
-import javax.swing.border.TitledBorder;
+
 import java.awt.Font;
 
 public class LoginSenha extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtLogin;
 	private JPasswordField passwordField;
+	private final LoginSenhaController controller;
 
 	/**
 	 * Launch the application.
@@ -45,16 +54,25 @@ public class LoginSenha extends JFrame {
 		setBounds(100, 100, 295, 203);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		controller =  new LoginSenhaController(this);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		
+		//Aqui o controlador LoginController será chamado para fazer as funções com o banco de dados.
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Valida o login e senha previamente cadastrados dentro de um If
-			new TelaPrincipal().setVisible(true);
-			dispose();
+				
+				controller.EntrarNoSistema();
+				//controller.Validar(txtLogin.getText(),passwordField.getText());
+				
+			//Chama a tela Principal apos o login do usuario  - true -	
+			//new TelaPrincipal().setVisible(false);
+		
+			//Aqui fecha a tela de login apos execução de qualquer ação na tela
+			//dispose();
 			}
 		});
 		btnLogin.setBounds(66, 90, 89, 23);
@@ -83,6 +101,7 @@ public class LoginSenha extends JFrame {
 		txtLogin.setBounds(66, 27, 213, 20);
 		contentPane.add(txtLogin);
 		txtLogin.setColumns(10);
+		txtLogin.getText();
 
 		JLabel lblLogin = new JLabel("E-MAIL");
 		lblLogin.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -102,6 +121,33 @@ public class LoginSenha extends JFrame {
 		lblImagem.setIcon(
 				new ImageIcon("C:\\Users\\IS&MA\\Documents\\Projetos Java\\fligsistemaescola\\Imagens\\transferir.jpeg"));
 		lblImagem.setBounds(0, -17, 351, 211);
-		contentPane.add(lblImagem);
+		contentPane.add(lblImagem);		
 	}
+	
+	
+	//Metodo para retornar a MSG apos execução do botão login
+	public void exibirMSG(String mensagem) {
+		JOptionPane.showMessageDialog(null, mensagem);
+		
+	}
+	
+	//Criar getter e setter para receber ou enviar informações para o Logincontroller
+
+	public JTextField getTxtLogin() {
+		return txtLogin;
+	}
+
+	public void setTxtLogin(JTextField txtLogin) {
+		this.txtLogin = txtLogin;
+	}
+
+	public JPasswordField getPasswordField() {
+		return passwordField;
+	}
+
+	public void setPasswordField(JPasswordField passwordField) {
+		this.passwordField = passwordField;
+	}
+	
+	
 }

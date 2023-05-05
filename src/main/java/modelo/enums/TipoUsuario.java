@@ -1,4 +1,4 @@
-package modelo;
+package modelo.enums;
 
 //Foi necessario importar java.util para, corrigir o erro do metodo stream.
 import java.util.*;

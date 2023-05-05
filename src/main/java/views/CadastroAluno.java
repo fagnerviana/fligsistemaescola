@@ -7,8 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JSplitPane;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JButton;
 

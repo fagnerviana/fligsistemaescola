@@ -1,25 +1,24 @@
 package modelo;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@Entity
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DisciplinaCurso {
-
-	//Resolver a dupla ID
-	@Id
-	private int iddisciplina;
-	private int idcurso;
+@Table(name= "Boletim")
+public class Boletim {
+	
+	private int faltas;
+	private double notas_media;
+	private double resultado_final;
+	
 
 }
