@@ -12,14 +12,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import modelo.enums.TipoUsuario;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Usuario implements Serializable{
@@ -43,16 +46,21 @@ public class Usuario implements Serializable{
 	@ManyToMany(mappedBy = "alunos")
 	private List<Turma> turmas = new ArrayList<>();
 	
+	@ManyToMany(mappedBy = "professores")
+	private List<Turma> turmasProfessores = new ArrayList<>();
+	
+	@OneToMany(mappedBy="usuario")
+	private List<Disciplina> disciplinas = new ArrayList<>();
+	
+	
+	
 		
 	
 	//Validar senha e login
 	public Usuario(String senha, String login) {
 		this.senha = senha;
 		this.login = login;
-	}
-	
-	
-	
+	}	
 	
 	
 	/*

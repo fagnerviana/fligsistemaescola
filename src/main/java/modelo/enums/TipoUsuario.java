@@ -5,9 +5,9 @@ import java.util.*;
 
 public enum TipoUsuario {
 	
-	Professor(1,"Professor"),
-	Aluno(2,"Aluno"),
-	Administrador(3,"Administrador");
+	PROFESSOR(1,"Professor"),
+	ALUNO(2,"Aluno"),
+	ADMINISTRADOR(3,"Administrador");
 	
 	private final int valor;
     private final String descricao;

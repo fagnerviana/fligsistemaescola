@@ -8,31 +8,32 @@ import modelo.Curso;
 import modelo.Disciplina;
 import util.JpaUtil;
 
-public class CursoDao {
+public class DisciplinaDao {
 
 	private EntityManager em = JpaUtil.getEntityManager();
-	public CursoDao(){
+	
+	public DisciplinaDao(){
 		
 	}
 	
 	
-	public void saveAllDisciplinas(List<Disciplina> disciplinas) {
+	public void saveAllCursos(List<Curso> cursos) {
 
 		em.getTransaction().begin();
 
-		for (Disciplina disciplina : disciplinas) {
-			em.persist(disciplina);
+		for (Curso curso : cursos) {
+			em.persist(curso);
 
 		}
 		em.getTransaction().commit();
 
 	}
 
-	public void SalvarCurso(Curso curso) {
+	public void SalvarDisciplina(Disciplina disciplina) {
 
 		try {
 			em.getTransaction().begin();
-			em.persist(curso);
+			em.persist(disciplina);
 			em.getTransaction().commit();
 			em.close();
 
@@ -44,20 +45,20 @@ public class CursoDao {
 	}
 
 	// Retorna o usuario conforme o seu ID
-	public Curso getById(final Integer id) {
-		return em.find(Curso.class, id);
+	public Disciplina getById(final Integer id) {
+		return em.find(Disciplina.class, id);
 	}
 
-	// Tras a lista de cursos
+	// Tras a lista de usuarios
 	@SuppressWarnings("unchecked")
-	public List<Curso> findAll() {
-		return em.createQuery("FROM " + Curso.class.getName()).getResultList();
+	public List<Disciplina> findAll() {
+		return em.createQuery("FROM " + Disciplina.class.getName()).getResultList();
 	}
 
-	public void Update(Curso curso) {
+	public void Update(Disciplina disciplina) {
 		try {
 			em.getTransaction().begin();
-			em.merge(curso);
+			em.merge(disciplina);
 			em.getTransaction().commit();
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -65,11 +66,11 @@ public class CursoDao {
 		}
 	}
 
-	public void remove(Curso curso) {
+	public void remove(Disciplina disciplina) {
 		try {
 			em.getTransaction().begin();
-			curso = em.find(Curso.class, curso.getId());
-			em.remove(curso);
+			disciplina = em.find(Disciplina.class, disciplina.getId());
+			em.remove(disciplina);
 			em.getTransaction().commit();
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -79,8 +80,8 @@ public class CursoDao {
 
 	public void removeById(final Integer id) {
 		try {
-			Curso curso = getById(id);
-			remove(curso);
+			Disciplina disciplina = getById(id);
+			remove(disciplina);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

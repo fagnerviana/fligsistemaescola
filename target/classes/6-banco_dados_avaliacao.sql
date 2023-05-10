@@ -2,12 +2,7 @@ CREATE TABLE IF NOT EXISTS avaliacao
 (
    id SERIAL NOT NULL,
    iddisciplina BIGINT NOT NULL,
-   notaProva DECIMAL
-   (
-      25,
-      2
-   )
-   NOT NULL,
+   notaProva DECIMAL(25,2) NOT NULL,
    nome VARCHAR (45) NOT NULL,
    CONSTRAINT avaliacao_key PRIMARY KEY (id)
 );

@@ -57,16 +57,19 @@ public class UsuarioDao {
 		}
 
 	}
-
+	
+	//Retorna o usuario conforme o seu ID
 	public Usuario getById(final Integer id) {
 		return em.find(Usuario.class, id);
 	}
 
+	//Tras a lista de usuarios
 	@SuppressWarnings("unchecked")
 	public List<Usuario> findAll() {
 		return em.createQuery("FROM " + Usuario.class.getName()).getResultList();
 	}
-
+	
+		
 	public void Update(Usuario usuario) {
 		try {
 			em.getTransaction().begin();
@@ -78,6 +81,7 @@ public class UsuarioDao {
 		}
 	}
 
+	
 	public void remove(Usuario usuario) {
 		try {
 			em.getTransaction().begin();
@@ -89,7 +93,7 @@ public class UsuarioDao {
 			em.getTransaction().rollback();
 		}
 	}
-
+	
 	public void removeById(final Integer id) {
 		try {
 			Usuario usuario = getById(id);
@@ -98,5 +102,7 @@ public class UsuarioDao {
 			ex.printStackTrace();
 		}
 	}
+	
+	
 
 }

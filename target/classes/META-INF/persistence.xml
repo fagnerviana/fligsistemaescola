@@ -7,7 +7,7 @@
 
 	<persistence-unit name="flig-jpa" transaction-type="RESOURCE_LOCAL">
 	<properties>
-		<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5434/sistemaacademico?useSSL=false&amp;serverTimezone=UTC" />
+		<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5434/flig?useSSL=false&amp;serverTimezone=UTC" />
 		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 		<property name="javax.persistence.jdbc.user" value="postgres" />
 		<property name="javax.persistence.jdbc.password" value="admin" />

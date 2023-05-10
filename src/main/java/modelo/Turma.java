@@ -43,6 +43,13 @@ public class Turma implements Serializable{
 	)
 	private List<Usuario> alunos = new ArrayList<>();
 	
+	@ManyToMany
+	@JoinTable(name="turma_has_professor",
+	joinColumns = @JoinColumn(name="idturma"),
+	inverseJoinColumns = @JoinColumn(name="idprofessor")
+	)
+	private List<Usuario> professores = new ArrayList<>();
+	
 	
 		
 
