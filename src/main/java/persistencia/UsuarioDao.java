@@ -1,13 +1,19 @@
 package persistencia;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import modelo.Turma;
 import modelo.Usuario;
+import modelo.enums.TipoUsuario;
 import util.JpaUtil;
 
 public class UsuarioDao {
@@ -68,6 +74,41 @@ public class UsuarioDao {
 	public List<Usuario> findAll() {
 		return em.createQuery("FROM " + Usuario.class.getName()).getResultList();
 	}
+	
+	public List<Usuario> findAllAlunos(String tipo) {
+		
+		String jpql = "SELECT u FROM usuario u WHERE u.tipousuario = :tipo";
+	    List<Usuario> result = em
+	        .createQuery(jpql, Usuario.class)
+	        .setParameter("valor", tipo)
+	        .getResultList();
+	    return result;
+	}
+	
+
+	public List<Usuario> findAllPorTipo(String tipo) {
+		
+		List<Usuario> user =em.createQuery("FROM " + Usuario.class.getName()).getResultList();
+		List<Usuario> professor = new ArrayList<>();
+		for (Usuario usuario : user) {
+			if(usuario.getTipoUsuario().toString() ==tipo) {
+				professor.add(usuario);
+			}
+			
+		}
+		
+		return professor;
+		
+		
+		/*
+		String jpql = "SELECT u FROM usuario u WHERE u.tipousuario = :tipo";
+	    TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
+	    query.setParameter("tipousuario", tipo);
+	    return query.getResultList();
+	    */
+	}
+
+	
 	
 		
 	public void Update(Usuario usuario) {

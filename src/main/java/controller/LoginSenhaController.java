@@ -32,7 +32,7 @@ public class LoginSenhaController {
 		Usuario autenticado = new Usuario();
 		autenticado = usuarioDao.validarLogin(usuario.getLogin(), usuario.getSenha());
 		
-		System.out.println(autenticado);
+		//System.out.println(autenticado);
 		if (autenticado != null) {
 			TelaPrincipal inicio = new TelaPrincipal();
 			inicio.setVisible(true);

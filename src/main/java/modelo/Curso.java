@@ -16,12 +16,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Curso {
 	
 	@Id
@@ -29,7 +31,10 @@ public class Curso {
 	private int id;	
 	private String nome;
 	private double valor;
+	//Aqui vai ter que buscar o total de horas das disciplinas
 	private int cargaHorariaTotal;
+	
+	
 	
 	@ManyToMany
 	@JoinTable(name="disciplina_has_curso",

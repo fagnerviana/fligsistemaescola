@@ -1,13 +1,19 @@
 package application;
 
+import java.util.Arrays;
+
+
+
+import modelo.Curso;
 import modelo.Disciplina;
+import persistencia.CursoDao;
+import persistencia.DisciplinaDao;
 
 public class Teste {
 
 	public static void main(String[] args) throws ClassNotFoundException {
 		
-		Disciplina d1 = new Disciplina();
-	
+			
 		
 		/*
 		AvaliacaoTurmaAlunoId ata = new AvaliacaoTurmaAlunoId();

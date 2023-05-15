@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -36,13 +37,15 @@ public class Disciplina implements Serializable {
 	private String nome;
 	private int cargaHoraria;
 
-	//Aqui vai atender o relacionamento de muitos para um Disciplina x professor
-	@ManyToOne
-	@JoinColumn(name="idprofessor")
-	private Usuario usuario;
+	//Aqui vai atender o relacionamento de muitos para muitos disciplina x professor 
+	@ManyToMany
+	@JoinTable(name="disciplina_has_professores",
+	joinColumns = @JoinColumn(name="iddisciplina"),
+	inverseJoinColumns = @JoinColumn(name="idprofessor"))
+	private List<Usuario> professores= new ArrayList<>();
+		
 	
-	
-	//Aqui vai atender o relacionamento de muitos para muitos disciplina_has_curso
+	//Aqui vai atender o relacionamento de muitos para muitos disciplina_has_curso 
 	@ManyToMany(mappedBy = "disciplinas")
 	private List<Curso> cursos = new ArrayList<>();
 	

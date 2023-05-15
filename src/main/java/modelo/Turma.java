@@ -36,6 +36,8 @@ public class Turma implements Serializable{
 	private LocalDate data;
 	
 	//para atender o relacionamento de n para n de Aluno x Turma 
+	
+	/*
 	@ManyToMany
 	@JoinTable(name="turma_has_aluno",
 	joinColumns = @JoinColumn(name="idturma"),
@@ -49,7 +51,7 @@ public class Turma implements Serializable{
 	inverseJoinColumns = @JoinColumn(name="idprofessor")
 	)
 	private List<Usuario> professores = new ArrayList<>();
-	
+	*/
 	
 		
 

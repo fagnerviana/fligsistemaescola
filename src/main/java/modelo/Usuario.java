@@ -42,18 +42,19 @@ public class Usuario implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private TipoUsuario tipoUsuario;
 	
+	/*
+	
 	//Atender n para n de turmas
 	@ManyToMany(mappedBy = "alunos")
 	private List<Turma> turmas = new ArrayList<>();
 	
 	@ManyToMany(mappedBy = "professores")
 	private List<Turma> turmasProfessores = new ArrayList<>();
-	
-	@OneToMany(mappedBy="usuario")
+		
+	@ManyToMany(mappedBy = "professores")
 	private List<Disciplina> disciplinas = new ArrayList<>();
 	
-	
-	
+	*/
 		
 	
 	//Validar senha e login

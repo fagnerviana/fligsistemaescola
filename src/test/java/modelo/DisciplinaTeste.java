@@ -13,14 +13,20 @@ public class DisciplinaTeste {
 	public Usuario user = new Usuario();
 	
 	
-	@Test
+	//@Test
+	public void escluirDisciplina() {
+		dao.removeById(3);
+		
+	}
+	
+	//@Test
 	public void salvarDisciplina() {
-		user = userdao.getById(4);
-		disciplina.setNome("Portugues");
-		disciplina.setUsuario(user);
+		disciplina.setNome("EDITAR teste");
 		disciplina.setCargaHoraria(340);
 		dao.SalvarDisciplina(disciplina);
 		
 		}
+	
+	
 
 }
