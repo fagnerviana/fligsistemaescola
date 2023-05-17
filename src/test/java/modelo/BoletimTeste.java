@@ -2,6 +2,7 @@ package modelo;
 
 import org.junit.Test;
 
+import modelo.enums.TipoResultado;
 import persistencia.BoletimDao;
 import persistencia.UsuarioDao;
 
@@ -20,7 +21,7 @@ public class BoletimTeste {
 		bo.setFaltas(5);
 		bo.setAluno(aluno);
 		bo.setNotas_media(7.5);
-		bo.setResultado_final(1);
+		bo.setResultado_final(TipoResultado.APROVADO);
 		
 		boDao.SalvarBoletim(bo);
 		
