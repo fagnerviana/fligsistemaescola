@@ -39,7 +39,7 @@ public class Disciplina implements Serializable {
 
 	//Aqui vai atender o relacionamento de muitos para muitos disciplina x professor 
 	@ManyToMany
-	@JoinTable(name="disciplina_has_professores",
+	@JoinTable(name="disciplina_has_professor",
 	joinColumns = @JoinColumn(name="iddisciplina"),
 	inverseJoinColumns = @JoinColumn(name="idprofessor"))
 	private List<Usuario> professores= new ArrayList<>();
@@ -49,13 +49,10 @@ public class Disciplina implements Serializable {
 	@ManyToMany(mappedBy = "disciplinas")
 	private List<Curso> cursos = new ArrayList<>();
 	
+	
 	//Aqui vai atender o relacionamento de muitos para um Disciplina x Avaliação
 	@OneToMany(mappedBy="disciplina")
 	private List<Avaliacao> avaliacao = new ArrayList<>();
-	
-	
-	
-	
 	
 	
 }

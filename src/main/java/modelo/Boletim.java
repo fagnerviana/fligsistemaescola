@@ -2,13 +2,22 @@ package modelo;
 
 
 import java.io.Serializable;
-import javax.persistence.EmbeddedId;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import modelo.Embeddable.BoletimEmbeddable;
+import modelo.enums.TipoResultado;
 
 
 @Entity
@@ -17,19 +26,22 @@ import modelo.Embeddable.BoletimEmbeddable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Boletim implements Serializable{
-		
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	//Atender as duas chaves primárias foi criado a classe BoletimEmbeddable
-	@EmbeddedId
-	private BoletimEmbeddable id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idaluno")
+	private Usuario aluno;
 	private int faltas;	
 	private double notas_media;
-	private double resultado_final;
+	@Enumerated(EnumType.STRING)
+	private TipoResultado resultado_final;
 	
 
 }

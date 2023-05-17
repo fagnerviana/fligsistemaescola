@@ -27,6 +27,12 @@ public class DisciplinaTeste {
 		
 		}
 	
+	public void updateDisciplina() {
+		disciplina = dao.getById(null);
+		
+		dao.Update(disciplina);
+	}
+	
 	
 
 }

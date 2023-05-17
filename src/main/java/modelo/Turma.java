@@ -31,13 +31,13 @@ public class Turma implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String codigo;
 	private LocalDate data;
 	
 	//para atender o relacionamento de n para n de Aluno x Turma 
 	
-	/*
+	
 	@ManyToMany
 	@JoinTable(name="turma_has_aluno",
 	joinColumns = @JoinColumn(name="idturma"),
@@ -45,13 +45,15 @@ public class Turma implements Serializable{
 	)
 	private List<Usuario> alunos = new ArrayList<>();
 	
-	@ManyToMany
-	@JoinTable(name="turma_has_professor",
-	joinColumns = @JoinColumn(name="idturma"),
-	inverseJoinColumns = @JoinColumn(name="idprofessor")
-	)
-	private List<Usuario> professores = new ArrayList<>();
-	*/
+	
+	/*
+	 * @ManyToMany
+	 * 
+	 * @JoinTable(name="turma_has_professor", joinColumns
+	 * = @JoinColumn(name="idturma"), inverseJoinColumns
+	 * = @JoinColumn(name="idprofessor") ) private List<Usuario> professores = new
+	 * ArrayList<>();
+	 */
 	
 		
 

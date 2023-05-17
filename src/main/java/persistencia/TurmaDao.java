@@ -17,7 +17,7 @@ public class TurmaDao {
 	}
 	
 	
-	
+	//metodo para atender turmas_as_aluno
 	public void saveAllUsuario(List<Usuario> alunos) {
 		
 		em.getTransaction().begin();

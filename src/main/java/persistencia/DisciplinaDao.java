@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import modelo.Curso;
 import modelo.Disciplina;
+import modelo.Usuario;
 import util.JpaUtil;
 
 public class DisciplinaDao {
@@ -14,6 +15,19 @@ public class DisciplinaDao {
 	
 	public DisciplinaDao(){
 		
+	}
+	
+	//atender o mapeamento disciplina_has_professor
+	public void saveAllDisciplinaProfessor(List<Usuario> professores) {
+
+		em.getTransaction().begin();
+
+		for (Usuario usuario : professores) {
+			em.persist(usuario);
+
+		}
+		em.getTransaction().commit();
+
 	}
 	
 	
@@ -44,17 +58,19 @@ public class DisciplinaDao {
 
 	}
 
-	// Retorna o usuario conforme o seu ID
+	//Retorna a disciplina pelo seu ID
 	public Disciplina getById(final Integer id) {
 		return em.find(Disciplina.class, id);
 	}
 
-	// Tras a lista de usuarios
+	//Lista todas as disciplinas
 	@SuppressWarnings("unchecked")
 	public List<Disciplina> findAll() {
 		return em.createQuery("FROM " + Disciplina.class.getName()).getResultList();
 	}
 
+	
+	
 	public void Update(Disciplina disciplina) {
 		try {
 			em.getTransaction().begin();

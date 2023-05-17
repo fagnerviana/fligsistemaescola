@@ -6,14 +6,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
+import modelo.Disciplina;
 import modelo.Turma;
 import modelo.Usuario;
-import modelo.enums.TipoUsuario;
 import util.JpaUtil;
 
 public class UsuarioDao {
@@ -36,7 +32,22 @@ public class UsuarioDao {
 			return null;
 		}
 	}
+	
+	//Metado para atender o mapeamento de disciplna_has_professor
+	public void saveAllUsuarioDisciplina(List<Disciplina> disciplinas) {
 
+		em.getTransaction().begin();
+
+		for (Disciplina disciplina : disciplinas) {
+			em.persist(disciplina);
+
+		}
+		em.getTransaction().commit();
+
+	}
+	
+	
+    //metodo para atender tumas_has_aluno
 	public void saveAllTurma(List<Turma> turmas) {
 
 		em.getTransaction().begin();

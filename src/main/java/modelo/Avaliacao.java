@@ -34,6 +34,7 @@ public class Avaliacao implements Serializable{
 	private String nome;
 	private double notaProva;
 	
+	
 	@ManyToOne
 	@JoinColumn(name="iddisciplina")
 	private Disciplina disciplina;

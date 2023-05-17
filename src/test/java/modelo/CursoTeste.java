@@ -23,7 +23,7 @@ public class CursoTeste {
 	}
 	
 	//finDall - Teste Realizado - ok -  12/05/2023 - Fagner - OBS - o teste foi realizado sem o mapeamento de Curso x Disciplina
-	@Test
+	//@Test
 	public void findAll() {
 		 
 		 System.out.println(dao.findAll());
@@ -31,7 +31,7 @@ public class CursoTeste {
 	}
 		
 	//SalvarCurso - Teste Realizado - ok -  12/05/2023 - Fagner 
-	@Test 
+	//@Test 
 	public void salvarCurso() {
 	 
 	 curso.setNome("6ª B"); 
@@ -46,6 +46,15 @@ public class CursoTeste {
 		curso=dao.getById(2);
 		System.out.println(curso);						
 	}
+	
+	@Test
+		public void updateCurso() {
+			curso=dao.getById(5);
+			curso.setNome("6ª Serie");
+			dao.Update(curso);
+			System.out.println(curso.getNome());						
+		}
+		
 	
 
 }

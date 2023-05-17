@@ -8,11 +8,13 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,19 +44,17 @@ public class Usuario implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private TipoUsuario tipoUsuario;
 	
-	/*
+	
 	
 	//Atender n para n de turmas
 	@ManyToMany(mappedBy = "alunos")
 	private List<Turma> turmas = new ArrayList<>();
-	
-	@ManyToMany(mappedBy = "professores")
-	private List<Turma> turmasProfessores = new ArrayList<>();
 		
-	@ManyToMany(mappedBy = "professores")
+		
+	@ManyToMany(mappedBy = "professores" ,fetch =FetchType.LAZY)
 	private List<Disciplina> disciplinas = new ArrayList<>();
 	
-	*/
+	
 		
 	
 	//Validar senha e login
