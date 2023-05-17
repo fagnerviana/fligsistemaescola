@@ -13,16 +13,19 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class CadastroFuncionarios extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JPasswordField passwordField;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField textNome;
+	private JTextField textEmail;
+	private JTextField textDtCadastro;
+	private JPasswordField passwordSenha;
+	private JTextField textExpira;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -45,7 +48,7 @@ public class CadastroFuncionarios extends JFrame {
 	 */
 	public CadastroFuncionarios() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 536, 363);
+		setBounds(100, 100, 523, 472);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -81,47 +84,39 @@ public class CadastroFuncionarios extends JFrame {
 		lblDataDoCadastro.setBounds(16, 249, 95, 14);
 		contentPane.add(lblDataDoCadastro);
 		
-		textField = new JTextField();
-		textField.setBounds(72, 81, 269, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textNome = new JTextField();
+		textNome.setBounds(72, 81, 269, 20);
+		contentPane.add(textNome);
+		textNome.setEditable(false);
+		textNome.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(72, 124, 269, 20);
-		contentPane.add(textField_1);
+		textEmail = new JTextField();
+		textEmail.setColumns(10);
+		textEmail.setBounds(72, 124, 269, 20);
+		contentPane.add(textEmail);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(107, 246, 95, 20);
-		contentPane.add(textField_2);
+		textDtCadastro = new JTextField();
+		textDtCadastro.setColumns(10);
+		textDtCadastro.setBounds(107, 246, 95, 20);
+		contentPane.add(textDtCadastro);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Portugu\u00EAs", "Matem\u00E1tica", "Hist\u00F3ria", "F\u00EDsica", "Qu\u00EDmica"}));
-		comboBox_1.setBounds(72, 206, 269, 22);
-		contentPane.add(comboBox_1);
+		JComboBox comboDisciplina = new JComboBox();
+		comboDisciplina.setModel(new DefaultComboBoxModel(new String[] {"Portugu\u00EAs", "Matem\u00E1tica", "Hist\u00F3ria", "F\u00EDsica", "Qu\u00EDmica"}));
+		comboDisciplina.setBounds(72, 206, 269, 22);
+		contentPane.add(comboDisciplina);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(72, 165, 269, 20);
-		contentPane.add(passwordField);
-		
-		JLabel lblTelefone = new JLabel("Telefone:");
-		lblTelefone.setBounds(16, 291, 95, 14);
-		contentPane.add(lblTelefone);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(72, 288, 147, 20);
-		contentPane.add(textField_3);
+		passwordSenha = new JPasswordField();
+		passwordSenha.setBounds(72, 165, 269, 20);
+		contentPane.add(passwordSenha);
 		
 		JLabel lblExpiraEm = new JLabel("Expira em:");
 		lblExpiraEm.setBounds(212, 249, 57, 14);
 		contentPane.add(lblExpiraEm);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(267, 246, 95, 20);
-		contentPane.add(textField_4);
+		textExpira = new JTextField();
+		textExpira.setColumns(10);
+		textExpira.setBounds(267, 246, 95, 20);
+		contentPane.add(textExpira);
 		
 		JLabel lblCDFuncionarios = new JLabel("Cadastro de Funcionarios");
 		lblCDFuncionarios.setBounds(16, 11, 169, 14);
@@ -129,28 +124,49 @@ public class CadastroFuncionarios extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel.setBounds(10, 34, 377, 285);
+		panel.setBounds(10, 34, 377, 249);
 		contentPane.add(panel);
 		
 		JButton btnNovo = new JButton("Novo");
-		btnNovo.setBounds(415, 34, 89, 23);
+		btnNovo.setBounds(10, 300, 89, 23);
 		contentPane.add(btnNovo);
 		
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(415, 168, 89, 23);
+		btnSalvar.setBounds(113, 300, 89, 23);
+		btnSalvar.setEnabled(false);
 		contentPane.add(btnSalvar);
 		
 		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(415, 136, 89, 23);
+		btnExcluir.setBounds(410, 300, 89, 23);
+		btnExcluir.setEnabled(false);
 		contentPane.add(btnExcluir);
 		
 		JButton btnEditar = new JButton("Editar");
-		btnEditar.setBounds(415, 68, 89, 23);
+		btnEditar.setBounds(212, 300, 89, 23);
+		btnEditar.setEnabled(false);
 		contentPane.add(btnEditar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(415, 102, 89, 23);
+		btnCancelar.setBounds(311, 300, 89, 23);
+		btnCancelar.setEnabled(false);
 		contentPane.add(btnCancelar);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 334, 497, 96);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null},
+			},
+			new String[] {
+				"Fun\u00E7\u00E3o", "Nome", "Email", "Senha"
+			}
+		));
+		scrollPane.setViewportView(table);
+	}
+	public void habilitabotoes() {
 		
 	}
 }
