@@ -8,18 +8,22 @@ import persistencia.UsuarioDao;
 import views.CadastroAluno;
 
 public class CadastroAlunoController {
+	
 	private final CadastroAluno view;
+	
 	
 	public CadastroAlunoController(CadastroAluno view) {
 		this.view = view;
 		
 	}
 	
-	/*
-	public void buscarAlunoTurma() {
+	
+	public List<Usuario> buscarAlunoTurma() {
+	
 		UsuarioDao dao = new UsuarioDao();
-		List<Usuario> user = dao.findAll(TipoUsuario.ALUNO); 
-		System.out.println(user);
-		
-	}*/
+		List<Usuario> alunoLista= dao.findAllPorTipo("ALUNO");
+	
+		return alunoLista;
+	}
+	
 }
