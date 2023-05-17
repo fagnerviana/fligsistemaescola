@@ -86,29 +86,31 @@ public class UsuarioDao {
 		return em.createQuery("FROM " + Usuario.class.getName()).getResultList();
 	}
 	
-	public List<Usuario> findAllAlunos(String tipo) {
-		
-		String jpql = "SELECT u FROM usuario u WHERE u.tipousuario = :tipo";
-	    List<Usuario> result = em
-	        .createQuery(jpql, Usuario.class)
-	        .setParameter("valor", tipo)
-	        .getResultList();
-	    return result;
-	}
-	
-
+	//Para atender a tela de usuario por tipo
 	public List<Usuario> findAllPorTipo(String tipo) {
 		
 		List<Usuario> user =em.createQuery("FROM " + Usuario.class.getName()).getResultList();
-		List<Usuario> professor = new ArrayList<>();
+		List<Usuario> lista = new ArrayList<>();
 		for (Usuario usuario : user) {
 			if(usuario.getTipoUsuario().toString() ==tipo) {
-				professor.add(usuario);
+				lista.add(usuario);
 			}
 			
 		}
 		
-		return professor;
+		return lista;
+	}
+	
+		public Usuario findPorTipo(String tipo) {
+			
+			List<Usuario> user =em.createQuery("FROM " + Usuario.class.getName()).getResultList();
+			Usuario usuarioEncontrado = new Usuario();
+			for (Usuario usuario : user) {
+				if(usuario.getTipoUsuario().toString() == tipo) {
+					usuarioEncontrado = usuario;
+				}				
+			}			
+			return usuarioEncontrado;
 		
 		
 		/*

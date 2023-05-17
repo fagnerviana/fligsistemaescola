@@ -5,7 +5,10 @@ import controller.helper.LoginSenhaHelper;
 import modelo.Usuario;
 import persistencia.UsuarioDao;
 import views.LoginSenha;
-import views.TelaPrincipal;
+import views.TelaAdministrador;
+import views.TelaAluno;
+import views.TelaProfessor;
+
 
 public class LoginSenhaController {
 
@@ -29,14 +32,34 @@ public class LoginSenhaController {
 		// Pesquisar Depois no banco
 		UsuarioDao usuarioDao = new UsuarioDao(); //Foi necessario criar a instancia 
 		
+		//Aqui o autenticado recebe o usuario que foi autenticado
 		Usuario autenticado = new Usuario();
 		autenticado = usuarioDao.validarLogin(usuario.getLogin(), usuario.getSenha());
 		
-		//System.out.println(autenticado);
+		//Verificar se é null, caso seja 
 		if (autenticado != null) {
-			TelaPrincipal inicio = new TelaPrincipal();
-			inicio.setVisible(true);
-			this.view.dispose();
+			
+			//Aqui verifica o tipo de usuario e encaminha conforme a tela ao seu perfil
+			if(autenticado.getTipoUsuario().toString() =="ALUNO") {
+
+				TelaAluno inicio = new TelaAluno();			
+				inicio.setVisible(true);
+				
+				this.view.dispose();
+				//Aqui verifica o tipo de usuario e encaminha conforme a tela ao seu perfil	
+			}else if(autenticado.getTipoUsuario().toString() =="PROFESSOR") {
+				TelaProfessor inicio = new TelaProfessor();			
+				inicio.setVisible(true);
+				
+				this.view.dispose();
+				//Aqui verifica o tipo de usuario e encaminha conforme a tela ao seu perfil
+			}else if(autenticado.getTipoUsuario().toString() =="ADMINISTRADOR") {
+				TelaAdministrador inicio = new TelaAdministrador();			
+				inicio.setVisible(true);
+				
+				this.view.dispose();
+			}		
+			
 		} else {
 			// System.out.println(autenticado.getNome());
 			view.exibirMSG("Usuario ou senha incorretos");

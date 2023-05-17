@@ -16,6 +16,8 @@ import util.JpaUtil;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -66,6 +68,7 @@ public class TelaAdministrador extends JFrame {
 		JMenuItem mntmAluno = new JMenuItem("Aluno(a)");
 		mntmAluno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Parabens Administrador");
 				new CadastroAluno().setVisible(true);
 			}
 		});

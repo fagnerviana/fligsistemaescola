@@ -14,10 +14,12 @@ public class CadastroAlunoController {
 		this.view = view;
 		
 	}
+	
+	/*
 	public void buscarAlunoTurma() {
 		UsuarioDao dao = new UsuarioDao();
 		List<Usuario> user = dao.findAll(TipoUsuario.ALUNO); 
 		System.out.println(user);
 		
-	}
+	}*/
 }

@@ -16,6 +16,8 @@ import util.JpaUtil;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -67,6 +69,8 @@ public class TelaProfessor extends JFrame {
 		mntmAluno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new CadastroAluno().setVisible(true);
+				
+				JOptionPane.showMessageDialog(null,"Parabens PROFESSOR");
 			}
 		});
 		mnNewMenu_1.add(mntmAluno);
