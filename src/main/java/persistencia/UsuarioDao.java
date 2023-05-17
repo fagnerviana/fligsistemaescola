@@ -1,104 +1,162 @@
 package persistencia;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
+
+import modelo.Disciplina;
+import modelo.Turma;
 import modelo.Usuario;
-import modelo.TipoUsuario;
+import util.JpaUtil;
 
 public class UsuarioDao {
 
-	private Connection connection;
+	private EntityManager em = JpaUtil.getEntityManager();
 
 	public UsuarioDao() {
+
+	}
+
+	// Esta função esta funcionando Retorna o nome do usuario ou null
+	public Usuario validarLogin(String login, String senha) {
+		Query query = em.createQuery("SELECT u FROM Usuario u WHERE u.login = :login AND u.senha = :senha");
+		query.setParameter("login", login);
+		query.setParameter("senha", senha);
 		try {
-			connection = Conecta.criarConexao();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+			Usuario usuario = (Usuario) query.getSingleResult();
+			return usuario;
+		} catch (NoResultException e) {
+			return null;
 		}
 	}
-
-	// Ok funcionando
-	// Realiza a inserção no banco de dados do objeto Usuario
-	public void insertUsuario(Usuario usuario) throws ClassNotFoundException {
-		try {
-			PreparedStatement statement = connection
-					.prepareStatement("insert into usuario(nome,senha,login,tipousuario) values(?,?,?,?)");
-			statement.setString(1, usuario.getNome());
-			statement.setString(2, usuario.getSenha());
-			statement.setString(3, usuario.getLogin());
-			statement.setString(4, usuario.getTipoUsuario().getDescricao());
-
-			statement.execute();
-			statement.close();
-
-			System.out.println("Inserindo usuario com Sucesso");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void updateUsuario(Usuario usuario) { 
-	 
-	try { 
-		PreparedStatement statement = connection.prepareStatement(
-	  "UPDATE usuario SET nome=?,login=?,senha=?,tipousuario=? WHERE id_usuario=?");
-	  statement.setString(1,usuario.getNome()); 
-	  statement.setString(2,usuario.getSenha()); 
-	  statement.setString(3,usuario.getLogin());
-	  statement.setString(4,usuario.getTipoUsuario().getDescricao());
-	  statement.setInt(5, usuario.getId());
-	  
-	  statement.execute(); 
-	  statement.close(); } 
-	catch (SQLException e) {
-	  e.printStackTrace(); 
-	  }
-	}
-
 	
-	public void deleteUsuario(int id) {
-		try {
-			PreparedStatement statement = connection.prepareStatement(
-					"DELETE from usuario WHERE id_usuario=?");
-			statement.setInt(1, id);
-			statement.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
+	//Metado para atender o mapeamento de disciplna_has_professor
+	public void saveAllUsuarioDisciplina(List<Disciplina> disciplinas) {
+
+		em.getTransaction().begin();
+
+		for (Disciplina disciplina : disciplinas) {
+			em.persist(disciplina);
+
 		}
+		em.getTransaction().commit();
+
+	}
+	
+	
+    //metodo para atender tumas_has_aluno
+	public void saveAllTurma(List<Turma> turmas) {
+
+		em.getTransaction().begin();
+
+		for (Turma turma : turmas) {
+			em.persist(turma);
+
+		}
+		em.getTransaction().commit();
+
 	}
 
-	
-	public Usuario getUsuarioById(int id) {
-
-		// Necessario instanciar usuario e tipousuario
-		Usuario usuario = null;
-		TipoUsuario tipousuario = null;
+	public void SalvarUsuario(Usuario usuario) {
 
 		try {
-			//Da o comando SELECT *FROM usuario WHERE id_usuario 
-			PreparedStatement statement = connection.prepareStatement("SELECT *FROM usuario WHERE id_usuario = ?");
-			statement.setInt(1, id);
-			ResultSet resultSet = statement.executeQuery();
+			em.getTransaction().begin();
+			em.persist(usuario);
+			em.getTransaction().commit();
+			em.close();
 
-			if (resultSet.next()) {
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+		}
 
-				usuario = new Usuario();
-				usuario.setId(resultSet.getInt("id_usuario"));
-				usuario.setNome(resultSet.getString("nome"));
-				usuario.setLogin(resultSet.getString("login"));
-				usuario.setSenha(resultSet.getString("senha"));
-				usuario.setTipoUsuario(TipoUsuario.getDescricao(resultSet.getString("tipousuario")));
+	}
+	
+	//Retorna o usuario conforme o seu ID
+	public Usuario getById(final Integer id) {
+		return em.find(Usuario.class, id);
+	}
 
+	//Tras a lista de usuarios
+	@SuppressWarnings("unchecked")
+	public List<Usuario> findAll() {
+		return em.createQuery("FROM " + Usuario.class.getName()).getResultList();
+	}
+	
+	//Para atender a tela de usuario por tipo
+	public List<Usuario> findAllPorTipo(String tipo) {
+		
+		List<Usuario> user =em.createQuery("FROM " + Usuario.class.getName()).getResultList();
+		List<Usuario> lista = new ArrayList<>();
+		for (Usuario usuario : user) {
+			if(usuario.getTipoUsuario().toString() ==tipo) {
+				lista.add(usuario);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+			
 		}
-		return usuario;
+		
+		return lista;
 	}
 	
+		public Usuario findPorTipo(String tipo) {
+			
+			List<Usuario> user =em.createQuery("FROM " + Usuario.class.getName()).getResultList();
+			Usuario usuarioEncontrado = new Usuario();
+			for (Usuario usuario : user) {
+				if(usuario.getTipoUsuario().toString() == tipo) {
+					usuarioEncontrado = usuario;
+				}				
+			}			
+			return usuarioEncontrado;
+		
+		
+		/*
+		String jpql = "SELECT u FROM usuario u WHERE u.tipousuario = :tipo";
+	    TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
+	    query.setParameter("tipousuario", tipo);
+	    return query.getResultList();
+	    */
+	}
+
+	
+	
+		
+	public void Update(Usuario usuario) {
+		try {
+			em.getTransaction().begin();
+			em.merge(usuario);
+			em.getTransaction().commit();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			em.getTransaction().rollback();
+		}
+	}
+
+	
+	public void remove(Usuario usuario) {
+		try {
+			em.getTransaction().begin();
+			usuario = em.find(Usuario.class, usuario.getId());
+			em.remove(usuario);
+			em.getTransaction().commit();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			em.getTransaction().rollback();
+		}
+	}
+	
+	public void removeById(final Integer id) {
+		try {
+			Usuario usuario = getById(id);
+			remove(usuario);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	
+
 }

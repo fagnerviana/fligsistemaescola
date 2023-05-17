@@ -1,44 +1,47 @@
- package modelo;
-
+package modelo;
 
 
 import java.io.Serializable;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import modelo.enums.TipoResultado;
+
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Avaliacao implements Serializable{
-	
+public class Boletim implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private String nome;
-	private double notaProva;
+	private Integer id;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idaluno")
+	private Usuario aluno;
+	private int faltas;	
+	private double notas_media;
+	@Enumerated(EnumType.STRING)
+	private TipoResultado resultado_final;
 	
-	@ManyToOne
-	@JoinColumn(name="iddisciplina")
-	private Disciplina disciplina;
-	
-	
-	
+
 }
