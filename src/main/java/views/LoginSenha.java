@@ -28,6 +28,7 @@ public class LoginSenha extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtLogin;
 	private JPasswordField passwordField;
+	
 	private final LoginSenhaController controller;
 
 	/**

@@ -44,7 +44,7 @@ public class TelaAdministrador extends JFrame {
 	public TelaAdministrador() {
 		this.controller = new TelaAdministradorController(this);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 732, 484);
 		
 		JMenuBar menuBar = new JMenuBar();

@@ -1,25 +1,26 @@
 package views;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.border.EtchedBorder;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
-
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.table.DefaultTableModel;
+
+import controller.CadastroAlunoController;
+import modelo.Usuario;
 
 public class CadastroAluno extends JFrame {
 
@@ -29,6 +30,7 @@ public class CadastroAluno extends JFrame {
 	private JTextField textFieldTurma;
 	private JTable tabelaDados;
 	private JPasswordField passwordField;
+	private CadastroAlunoController controller;
 
 	/**
 	 * Launch the application.
@@ -50,6 +52,9 @@ public class CadastroAluno extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastroAluno() {
+		
+		controller = new CadastroAlunoController(this);
+		//iniciar();
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 567, 408);
@@ -121,7 +126,7 @@ public class CadastroAluno extends JFrame {
 		btnNovo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				habilitaCampos();
-				// habilita os botões de acordo a utilização
+				// habilita os botï¿½es de acordo a utilizaï¿½ï¿½o
 				btnSalvar.setEnabled(true);
 				limpaCampos();
 			}
@@ -146,13 +151,13 @@ public class CadastroAluno extends JFrame {
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-			int i = JOptionPane.showConfirmDialog(btnExcluir, "Confirmar exlução do registro?");
+			int i = JOptionPane.showConfirmDialog(btnExcluir, "Confirmar exluï¿½ï¿½o do registro?");
 				if(i == JOptionPane.YES_OPTION) {
 					//chamar o evento delete controller
 				    System.out.println("Clicou em Sim");
 				}
 				else if(i == JOptionPane.NO_OPTION) {
-				    System.out.println("Clicou em Não");
+				    System.out.println("Clicou em Nï¿½o");
 				}
 				else if(i == JOptionPane.CANCEL_OPTION) {
 				    System.out.println("Clicou em Cancel");
@@ -191,7 +196,12 @@ public class CadastroAluno extends JFrame {
 				desabilitaCampos();
 			}
 		});
-		tabelaDados.setModel(new DefaultTableModel(new Object[][] { { null, null, null,null}, },
+		controller.atualizaTabela();
+		
+		for (Usuario user : controller.atualizaTabela()) {
+			
+		
+		tabelaDados.setModel(new DefaultTableModel(new Object[][] { { user.getNome(), user.getLogin(), user.getSenha(),user.getTurmas()}, },
 				new String[] { "Nome", "Email", "Senha", "Turma" }) {
 			/**
 			 * 
@@ -203,7 +213,14 @@ public class CadastroAluno extends JFrame {
 				return columnEditables[column];
 			}
 		});
+		
+		}//termina o FOR
 		scrollPane.setViewportView(tabelaDados);
+	}
+
+	private void iniciar() {
+		this.controller.atualizaTabela();
+		
 	}
 
 	public void limpaCampos() {
@@ -216,7 +233,7 @@ public class CadastroAluno extends JFrame {
 	}
 
 	public void habilitaCampos() {
-		// habilita os campos para edição
+		// habilita os campos para ediï¿½ï¿½o
 		textFieldNome.setEditable(true);
 		textFieldEmail.setEditable(true);
 		passwordField.setEditable(true);
@@ -224,11 +241,19 @@ public class CadastroAluno extends JFrame {
 
 	}
 	public void desabilitaCampos() {
-		// habilita os campos para edição
+		// habilita os campos para ediï¿½ï¿½o
 		textFieldNome.setEditable(false);
 		textFieldEmail.setEditable(false);
 		passwordField.setEditable(false);
 		textFieldTurma.setEditable(false);
 
+	}
+
+	public JTable getTabelaDados() {
+		return tabelaDados;
+	}
+
+	public void setTabelaDados(JTable tabelaDados) {
+		this.tabelaDados = tabelaDados;
 	}
 }

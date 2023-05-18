@@ -14,10 +14,11 @@ public class TurmaTeste {
 	public Turma turma = new Turma();
 
 	//Teste Realizado ok - 15/05/2023 Fagner 
-	//@Test
+	@Test
 	public void salvarTurma() {
 		turma.setCodigo("Editar Teste");
 		turma.setData(LocalDate.of(2023, 01, 10));
+		
 		dao.SalvarTurma(turma);
 		
 	}
