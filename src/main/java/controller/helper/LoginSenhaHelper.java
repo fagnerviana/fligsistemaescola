@@ -8,6 +8,7 @@ public class LoginSenhaHelper {
 	
 	//Ter propriedade do tipo LoginSenha para receber os dados da tela
 		private final LoginSenha view;
+		
 		public LoginSenhaHelper(LoginSenha view) {
 			this.view = view;
 		}
