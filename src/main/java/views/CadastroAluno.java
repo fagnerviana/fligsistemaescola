@@ -197,25 +197,21 @@ public class CadastroAluno extends JFrame {
 			}
 		});
 		controller.atualizaTabela();
+		DefaultTableModel tabelaDados = new DefaultTableModel();
 		
 		for (Usuario user : controller.atualizaTabela()) {
 			
-		
-		tabelaDados.setModel(new DefaultTableModel(new Object[][] { { user.getNome(), user.getLogin(), user.getSenha(),user.getTurmas()}, },
-				new String[] { "Nome", "Email", "Senha", "Turma" }) {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-			boolean[] columnEditables = new boolean[] { true, false, true, true };
-
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
+		tabelaDados.addRow(new Object[] {
+				user.getNome(), 
+				user.getLogin(), 
+				user.getSenha(),
+				user.getTurmas()
+				
+				
 		});
-		
-		}//termina o FOR
-		scrollPane.setViewportView(tabelaDados);
+	  }
+		JScrollPane scrollPane1 = new JScrollPane(this.tabelaDados);
+        add(scrollPane1);
 	}
 
 	private void iniciar() {
