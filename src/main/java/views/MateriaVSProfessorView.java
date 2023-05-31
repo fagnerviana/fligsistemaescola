@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class AlunosVSMateriaVIew extends JFrame {
+public class MateriaVSProfessorView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldTurma;
@@ -35,7 +35,7 @@ public class AlunosVSMateriaVIew extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AlunosVSMateriaVIew frame = new AlunosVSMateriaVIew();
+					MateriaVSProfessorView frame = new MateriaVSProfessorView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class AlunosVSMateriaVIew extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AlunosVSMateriaVIew() {
+	public MateriaVSProfessorView() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 523, 498);
 		contentPane = new JPanel();

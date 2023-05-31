@@ -20,16 +20,17 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controller.CadastroAlunoController;
+import controller.CadastroMateriaController;
 import modelo.Usuario;
 
-public class CadastroAlunoView extends JFrame {
+public class CadastroMateriaView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldNome;
 	private JTextField textFieldEmail;
-	private JTable tabelaDados;
+	private JTextField textFieldTurma;
 	private JPasswordField passwordField;
-	private CadastroAlunoController controller;
+	private CadastroMateriaController controller;
 
 	/**
 	 * Launch the application.
@@ -38,7 +39,7 @@ public class CadastroAlunoView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastroAlunoView frame = new CadastroAlunoView();
+					CadastroMateriaView frame = new CadastroMateriaView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,9 +51,9 @@ public class CadastroAlunoView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroAlunoView() {
+	public CadastroMateriaView() {
 		
-		controller = new CadastroAlunoController(this);
+		controller = new CadastroMateriaController(this);
 		//iniciar();
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -80,6 +81,10 @@ public class CadastroAlunoView extends JFrame {
 		lblSenha.setBounds(28, 104, 46, 14);
 		contentPane.add(lblSenha);
 
+		JLabel lblMateria = new JLabel("Turma");
+		lblMateria.setBounds(28, 129, 46, 14);
+		contentPane.add(lblMateria);
+
 		textFieldNome = new JTextField();
 		textFieldNome.setBounds(76, 51, 325, 20);
 		contentPane.add(textFieldNome);
@@ -91,6 +96,12 @@ public class CadastroAlunoView extends JFrame {
 		textFieldEmail.setBounds(76, 76, 325, 20);
 		textFieldEmail.setEditable(false);
 		contentPane.add(textFieldEmail);
+
+		textFieldTurma = new JTextField();
+		textFieldTurma.setColumns(10);
+		textFieldTurma.setBounds(76, 126, 325, 20);
+		textFieldTurma.setEditable(false);
+		contentPane.add(textFieldTurma);
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -167,57 +178,18 @@ public class CadastroAlunoView extends JFrame {
 		btnCancelar.setBounds(333, 161, 89, 23);
 		btnCancelar.setEnabled(false);
 		contentPane.add(btnCancelar);
+		
+		};
+		
 
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 189, 539, 177);
-		contentPane.add(scrollPane);
 
-		tabelaDados = new JTable();
-		
-		tabelaDados.addMouseListener(new MouseAdapter() {
-		
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				btnEditar.setEnabled(true);
-				btnCancelar.setEnabled(true);
-				btnSalvar.setEnabled(true);
-				btnExcluir.setEnabled(true);
-				desabilitaCampos();
-			}
-		});
-		controller.atualizaTabela();
-		
-		for (Usuario user : controller.atualizaTabela()) {
-			
-		
-		tabelaDados.setModel(new DefaultTableModel(new Object[][] { { user.getNome(), user.getLogin(), user.getSenha(),user.getTurmas()}, },
-				new String[] { "Nome", "Email", "Senha", "Turma" }) {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-			boolean[] columnEditables = new boolean[] { true, false, true, true };
-
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
-		});
-		
-		}//termina o FOR
-		scrollPane.setViewportView(tabelaDados);
-	}
-
-	private void iniciar() {
-		this.controller.atualizaTabela();
-		
-	}
 
 	public void limpaCampos() {
 		// limpeza dos campos
 		textFieldNome.setText("");
 		textFieldEmail.setText("");
 		passwordField.setText("");
-
+		textFieldTurma.setText("");
 
 	}
 
@@ -226,7 +198,7 @@ public class CadastroAlunoView extends JFrame {
 		textFieldNome.setEditable(true);
 		textFieldEmail.setEditable(true);
 		passwordField.setEditable(true);
-
+		textFieldTurma.setEditable(true);
 
 	}
 	public void desabilitaCampos() {
@@ -234,15 +206,7 @@ public class CadastroAlunoView extends JFrame {
 		textFieldNome.setEditable(false);
 		textFieldEmail.setEditable(false);
 		passwordField.setEditable(false);
+		textFieldTurma.setEditable(false);
 
-
-	}
-
-	public JTable getTabelaDados() {
-		return tabelaDados;
-	}
-
-	public void setTabelaDados(JTable tabelaDados) {
-		this.tabelaDados = tabelaDados;
 	}
 }

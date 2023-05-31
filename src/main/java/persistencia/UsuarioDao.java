@@ -156,7 +156,5 @@ public class UsuarioDao {
 			ex.printStackTrace();
 		}
 	}
-	
-	
 
 }

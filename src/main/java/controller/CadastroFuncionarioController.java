@@ -8,12 +8,12 @@ import modelo.enums.TipoUsuario;
 import persistencia.UsuarioDao;
 import views.CadastroAlunoView;
 
-public class CadastroAlunoController {
+public class CadastroFuncionarioController {
 
 	private final CadastroAlunoView view;
 	private final CadastroAlunoHelper helper;
 
-	public CadastroAlunoController(CadastroAlunoView view) {
+	public CadastroFuncionarioController(CadastroAlunoView view) {
 		this.view = view;
 		this.helper = new CadastroAlunoHelper(view);
 
@@ -22,7 +22,7 @@ public class CadastroAlunoController {
 	public List<Usuario> buscarAlunoTurma() {
 
 		UsuarioDao dao = new UsuarioDao();
-		List<Usuario> alunoLista = dao.findAllPorTipo("ALUNO");
+		List<Usuario> alunoLista = dao.findAllPorTipo("ADMINISTRADOR");
 
 		return alunoLista;
 	}
@@ -30,7 +30,7 @@ public class CadastroAlunoController {
 	public List<Usuario> atualizaTabela() {
 		// Buscar uma lista com os alunos no banco de dados
 		UsuarioDao user = new UsuarioDao();
-		List<Usuario> alunos = user.findAllPorTipo(TipoUsuario.ALUNO.toString());
+		List<Usuario> alunos = user.findAllPorTipo(TipoUsuario.ADMINISTRADOR.toString());
 
 		return alunos;
 

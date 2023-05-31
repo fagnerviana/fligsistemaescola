@@ -24,7 +24,7 @@ import javax.swing.JLabel;
 import javax.persistence.EntityManager;
 import javax.swing.ImageIcon;
 
-public class TelaAluno extends JFrame {
+public class TelaAlunoView extends JFrame {
 
 	private EntityManager em = JpaUtil.getEntityManager();
 	private JPanel contentPane;
@@ -37,7 +37,7 @@ public class TelaAluno extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaAluno frame = new TelaAluno();
+					TelaAlunoView frame = new TelaAlunoView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class TelaAluno extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaAluno() {
+	public TelaAlunoView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 732, 484);
 
@@ -68,7 +68,7 @@ public class TelaAluno extends JFrame {
 		JMenuItem mntmAluno = new JMenuItem("Aluno(a)");
 		mntmAluno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new CadastroAluno().setVisible(true);
+				new CadastroAlunoView().setVisible(true);
 				//IMPRIMIR NA TELA TESTANDO O METODO LOGIN
 				JOptionPane.showMessageDialog(null,"Parabens ALUNO");
 			}
@@ -78,7 +78,7 @@ public class TelaAluno extends JFrame {
 		JMenuItem mntmTurma = new JMenuItem("Turmas");
 		mntmTurma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new CadastroTurma().setVisible(false);
+				new AlunosVSMateriaVIew().setVisible(false);
 			}
 		});
 		mnNewMenu_1.add(mntmTurma);

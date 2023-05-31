@@ -92,7 +92,7 @@ public class LoginSenha extends JFrame {
 		JButton btnEsqueciaSenha = new JButton("Esqueci a senha");
 		btnEsqueciaSenha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new RecuperaSenha().setVisible(true);
+				new RecuperaSenhaView().setVisible(true);
 			}
 		});
 		btnEsqueciaSenha.setBounds(66, 124, 188, 23);
@@ -120,7 +120,7 @@ public class LoginSenha extends JFrame {
 
 		JLabel lblImagem = new JLabel("");
 		lblImagem.setIcon(
-				new ImageIcon("C:\\Users\\IS&MA\\Documents\\Projetos Java\\fligsistemaescola\\Imagens\\transferir.jpeg"));
+				new ImageIcon("C:\\Users\\IS&MA\\Documents\\Projeto FLIG\\workspace\\fligsistemaescola\\src\\main\\java\\assets\\transferir.jpeg"));
 		lblImagem.setBounds(0, -17, 351, 211);
 		contentPane.add(lblImagem);		
 	}
