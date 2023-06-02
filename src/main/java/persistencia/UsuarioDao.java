@@ -88,11 +88,12 @@ public class UsuarioDao {
 	
 	//Para atender a tela de usuario por tipo
 	public List<Usuario> findAllPorTipo(String tipo) {
-		
-		List<Usuario> user =em.createQuery("FROM " + Usuario.class.getName()).getResultList();
+		//ajustar para trazer informação por tipo de usuario
+		List<Usuario> user = (List<Usuario>) em.createQuery("SELECT u FROM Usuario u WHERE u.tipousuario = " + usuario.);
+				//"FROM " + Usuario.class.getName()).getResultList();
 		List<Usuario> lista = new ArrayList<>();
 		for (Usuario usuario : user) {
-			if(usuario.getTipoUsuario().toString() ==tipo) {
+			if(usuario.getTipoUsuario().toString() == tipo) {
 				lista.add(usuario);
 			}
 			

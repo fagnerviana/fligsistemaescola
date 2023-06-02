@@ -24,17 +24,17 @@ public class CadastroFuncionarioController {
 	public List<Usuario> buscarAlunoTurma() {
 
 		UsuarioDao dao = new UsuarioDao();
-		List<Usuario> alunoLista = dao.findAllPorTipo("ADMINISTRADOR");
+		List<Usuario> admLista = dao.findAllPorTipo("ADMINISTRADOR");
 
-		return alunoLista;
+		return admLista;
 	}
 
 	public List<Usuario> atualizaTabela() {
 		// Buscar uma lista com os alunos no banco de dados
 		UsuarioDao user = new UsuarioDao();
-		List<Usuario> alunos = user.findAllPorTipo(TipoUsuario.ADMINISTRADOR.toString());
+		List<Usuario> administrador = user.findAllPorTipo(TipoUsuario.ADMINISTRADOR.toString());
 
-		return alunos;
+		return administrador;
 
 	}
 

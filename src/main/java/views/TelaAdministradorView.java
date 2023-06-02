@@ -18,6 +18,8 @@ import javax.swing.border.EmptyBorder;
 import controller.AlunosVSMateriaController;
 import controller.LoginSenhaController;
 import controller.TelaAdministradorController;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TelaAdministradorView extends JFrame {
 
@@ -64,7 +66,7 @@ public class TelaAdministradorView extends JFrame {
 		JMenuItem mntmFuncionarios = new JMenuItem("Funcion\u00E1rios");
 		mntmFuncionarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new CadastroFuncionariosView().setVisible(true);
+				new CadastroFuncionariosView();
 			}
 		});
 		mnCadastro.add(mntmFuncionarios);

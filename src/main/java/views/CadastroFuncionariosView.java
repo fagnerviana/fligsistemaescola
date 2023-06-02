@@ -21,6 +21,8 @@ import controller.CadastroFuncionarioController;
 import modelo.Usuario;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CadastroFuncionariosView extends JFrame {
 
@@ -106,6 +108,11 @@ public class CadastroFuncionariosView extends JFrame {
 		contentPane.add(panel);
 
 		JButton btnNovo = new JButton("Novo");
+		btnNovo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textNome.setEnabled(true);
+			}
+		});
 		btnNovo.setBounds(10, 215, 89, 23);
 		contentPane.add(btnNovo);
 
@@ -159,8 +166,7 @@ public class CadastroFuncionariosView extends JFrame {
 				}
 			});
 
-
-			scrollPane.setViewportView(tableDadosFuncionarios);
+		scrollPane.setViewportView(tableDadosFuncionarios);
 
 	}
 
