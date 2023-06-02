@@ -3,19 +3,21 @@ package controller;
 import java.util.List;
 
 import controller.helper.CadastroAlunoHelper;
+import controller.helper.CadastroFuncionarioHelper;
 import modelo.Usuario;
 import modelo.enums.TipoUsuario;
 import persistencia.UsuarioDao;
 import views.CadastroAlunoView;
+import views.CadastroFuncionariosView;
 
 public class CadastroFuncionarioController {
 
-	private final CadastroAlunoView view;
-	private final CadastroAlunoHelper helper;
+	private final CadastroFuncionariosView view;
+	private final CadastroFuncionarioHelper helper;
 
-	public CadastroFuncionarioController(CadastroAlunoView view) {
+	public CadastroFuncionarioController(CadastroFuncionariosView view) {
 		this.view = view;
-		this.helper = new CadastroAlunoHelper(view);
+		this.helper = new CadastroFuncionarioHelper(view);
 
 	}
 

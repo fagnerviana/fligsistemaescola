@@ -19,6 +19,8 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.CadastroFuncionarioController;
 import modelo.Usuario;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class CadastroFuncionariosView extends JFrame {
 
@@ -26,8 +28,8 @@ public class CadastroFuncionariosView extends JFrame {
 	private JTextField textNome;
 	private JTextField textEmail;
 	private JPasswordField passwordSenha;
-	private JTable table;
 	private CadastroFuncionarioController controller;
+	private JTable tableDadosFuncionarios;
 
 	/**
 	 * Launch the application.
@@ -128,27 +130,45 @@ public class CadastroFuncionariosView extends JFrame {
 		contentPane.add(btnCancelar);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 249, 497, 181);
+		scrollPane.setBounds(10, 252, 489, 178);
 		contentPane.add(scrollPane);
 
+		tableDadosFuncionarios = new JTable();
+		tableDadosFuncionarios.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnSalvar.setEnabled(true);
+				btnEditar.setEnabled(true);
+				btnExcluir.setEnabled(true);
+				btnCancelar.setEnabled(true);
+			}
+		});
 		controller.atualizaTabela();
 		for (Usuario user : controller.atualizaTabela())
-
-			// table = new JTable();
-			table.setModel(new DefaultTableModel(
+			tableDadosFuncionarios.setModel(new DefaultTableModel(
 					new Object[][] { { user.getNome(), user.getLogin(), user.getSenha(), user.getTurmas() }, },
-					new String[] { "Fun\u00E7\u00E3o", "Nome", "Email", "Senha" }));
+					new String[] { "Nome", "Email", "Senha", "Turma" }) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+				boolean[] columnEditables = new boolean[] { true, false, true, true };
+
+				public boolean isCellEditable(int row, int column) {
+					return columnEditables[column];
+				}
+			});
+
+
+			scrollPane.setViewportView(tableDadosFuncionarios);
+
 	}
-		private static final long serialVersionUID = 1L;
-		boolean[] columnEditables = new boolean[] { true, false, true, true };
-		
-		public boolean isCellEditable(int row, int column) {
-			return columnEditables[column];
 
-		
+	public JTable getTableDadosFuncionarios() {
+		return tableDadosFuncionarios;
 	}
 
-	public void habilitabotoes() {
-
+	public void setTableDadosFuncionarios(JTable tableDadosFuncionarios) {
+		this.tableDadosFuncionarios = tableDadosFuncionarios;
 	}
 }

@@ -51,9 +51,9 @@ public class CadastroAlunoView extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastroAlunoView() {
-		
+
 		controller = new CadastroAlunoController(this);
-		//iniciar();
+		// iniciar();
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 567, 408);
@@ -62,7 +62,7 @@ public class CadastroAlunoView extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(76, 101, 325, 20);
 		passwordField.setEditable(false);
@@ -133,24 +133,20 @@ public class CadastroAlunoView extends JFrame {
 		btnEditar.setBounds(234, 161, 83, 23);
 		btnEditar.setEnabled(false);
 		contentPane.add(btnEditar);
-		
-		
 
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-			int i = JOptionPane.showConfirmDialog(btnExcluir, "Confirmar exlu��o do registro?");
-				if(i == JOptionPane.YES_OPTION) {
-					//chamar o evento delete controller
-				    System.out.println("Clicou em Sim");
-				}
-				else if(i == JOptionPane.NO_OPTION) {
-				    System.out.println("Clicou em N�o");
-				}
-				else if(i == JOptionPane.CANCEL_OPTION) {
-				    System.out.println("Clicou em Cancel");
-				    
+
+				int i = JOptionPane.showConfirmDialog(btnExcluir, "Confirmar exlu��o do registro?");
+				if (i == JOptionPane.YES_OPTION) {
+					// chamar o evento delete controller
+					System.out.println("Clicou em Sim");
+				} else if (i == JOptionPane.NO_OPTION) {
+					System.out.println("Clicou em N�o");
+				} else if (i == JOptionPane.CANCEL_OPTION) {
+					System.out.println("Clicou em Cancel");
+
 				}
 			}
 		});
@@ -173,9 +169,9 @@ public class CadastroAlunoView extends JFrame {
 		contentPane.add(scrollPane);
 
 		tabelaDados = new JTable();
-		
+
 		tabelaDados.addMouseListener(new MouseAdapter() {
-		
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnEditar.setEnabled(true);
@@ -186,30 +182,30 @@ public class CadastroAlunoView extends JFrame {
 			}
 		});
 		controller.atualizaTabela();
-		
-		for (Usuario user : controller.atualizaTabela()) {
-			
-		
-		tabelaDados.setModel(new DefaultTableModel(new Object[][] { { user.getNome(), user.getLogin(), user.getSenha(),user.getTurmas()}, },
-				new String[] { "Nome", "Email", "Senha", "Turma" }) {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-			boolean[] columnEditables = new boolean[] { true, false, true, true };
 
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
-		});
-		
-		}//termina o FOR
+		for (Usuario user : controller.atualizaTabela()) {
+
+			tabelaDados.setModel(new DefaultTableModel(
+					new Object[][] { { user.getNome(), user.getLogin(), user.getSenha(), user.getTurmas() }, },
+					new String[] { "Nome", "Email", "Senha", "Turma" }) {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+				boolean[] columnEditables = new boolean[] { true, false, true, true };
+
+				public boolean isCellEditable(int row, int column) {
+					return columnEditables[column];
+				}
+			});
+
+		} // termina o FOR
 		scrollPane.setViewportView(tabelaDados);
 	}
 
 	private void iniciar() {
 		this.controller.atualizaTabela();
-		
+
 	}
 
 	public void limpaCampos() {
@@ -217,7 +213,6 @@ public class CadastroAlunoView extends JFrame {
 		textFieldNome.setText("");
 		textFieldEmail.setText("");
 		passwordField.setText("");
-
 
 	}
 
@@ -227,14 +222,13 @@ public class CadastroAlunoView extends JFrame {
 		textFieldEmail.setEditable(true);
 		passwordField.setEditable(true);
 
-
 	}
+
 	public void desabilitaCampos() {
 		// habilita os campos para edi��o
 		textFieldNome.setEditable(false);
 		textFieldEmail.setEditable(false);
 		passwordField.setEditable(false);
-
 
 	}
 
