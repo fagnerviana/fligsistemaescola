@@ -5,9 +5,9 @@ import controller.helper.LoginSenhaHelper;
 import modelo.Usuario;
 import persistencia.UsuarioDao;
 import views.LoginSenha;
-import views.TelaAdministrador;
-import views.TelaAluno;
-import views.TelaProfessor;
+import views.TelaAdministradorView;
+import views.TelaAlunoView;
+import views.TelaProfessorView;
 
 
 public class LoginSenhaController {
@@ -42,19 +42,19 @@ public class LoginSenhaController {
 			//Aqui verifica o tipo de usuario e encaminha conforme a tela ao seu perfil
 			if(autenticado.getTipoUsuario().toString() =="ALUNO") {
 
-				TelaAluno inicio = new TelaAluno();			
+				TelaAlunoView inicio = new TelaAlunoView();			
 				inicio.setVisible(true);
 				
 				this.view.dispose();
 				//Aqui verifica o tipo de usuario e encaminha conforme a tela ao seu perfil	
 			}else if(autenticado.getTipoUsuario().toString() =="PROFESSOR") {
-				TelaProfessor inicio = new TelaProfessor();			
+				TelaProfessorView inicio = new TelaProfessorView();			
 				inicio.setVisible(true);
 				
 				this.view.dispose();
 				//Aqui verifica o tipo de usuario e encaminha conforme a tela ao seu perfil
 			}else if(autenticado.getTipoUsuario().toString() =="ADMINISTRADOR") {
-				TelaAdministrador inicio = new TelaAdministrador();			
+				TelaAdministradorView inicio = new TelaAdministradorView();			
 				inicio.setVisible(true);
 				
 				this.view.dispose();

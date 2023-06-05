@@ -5,14 +5,14 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 import modelo.Usuario;
-import views.CadastroAluno;
+import views.CadastroAlunoView;
 
 public class CadastroAlunoHelper {
 	
-	private final CadastroAluno view;
+	private final CadastroAlunoView view;
 	
 	
-	public CadastroAlunoHelper(CadastroAluno view) {
+	public CadastroAlunoHelper(CadastroAlunoView view) {
 		this.view = view;
 		
 	}

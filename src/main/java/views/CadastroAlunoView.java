@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 import controller.CadastroAlunoController;
 import modelo.Usuario;
 
-public class CadastroAluno extends JFrame {
+public class CadastroAlunoView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldNome;
@@ -39,7 +39,7 @@ public class CadastroAluno extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastroAluno frame = new CadastroAluno();
+					CadastroAlunoView frame = new CadastroAlunoView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +51,7 @@ public class CadastroAluno extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroAluno() {
+	public CadastroAlunoView() {
 		
 		controller = new CadastroAlunoController(this);
 		//iniciar();

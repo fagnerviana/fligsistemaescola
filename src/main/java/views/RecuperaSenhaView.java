@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class RecuperaSenha extends JFrame {
+public class RecuperaSenhaView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -23,7 +23,7 @@ public class RecuperaSenha extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RecuperaSenha frame = new RecuperaSenha();
+					RecuperaSenhaView frame = new RecuperaSenhaView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class RecuperaSenha extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RecuperaSenha() {
+	public RecuperaSenhaView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 405, 239);
 		contentPane = new JPanel();

@@ -15,7 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.TelaAdministradorController;
 
-public class TelaAdministrador extends JFrame {
+public class TelaAdministradorView extends JFrame {
 
 	private JPanel contentPane;
 	private final TelaAdministradorController controller;
@@ -29,7 +29,7 @@ public class TelaAdministrador extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaAdministrador frame = new TelaAdministrador();
+					TelaAdministradorView frame = new TelaAdministradorView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class TelaAdministrador extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaAdministrador() {
+	public TelaAdministradorView() {
 		this.controller = new TelaAdministradorController(this);
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -73,7 +73,7 @@ public class TelaAdministrador extends JFrame {
 		JMenuItem mntmTurma = new JMenuItem("Turma");
 		mntmTurma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new CadastroTurma().setVisible(true);
+				new AlunosVSMateriaView().setVisible(true);
 			}
 		});
 		mnNewMenu_1.add(mntmTurma);
@@ -81,7 +81,7 @@ public class TelaAdministrador extends JFrame {
 		JMenuItem mntmFuncionario = new JMenuItem("Funcionario(a)");
 		mntmFuncionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new CadastroFuncionarios().setVisible(true);
+				new CadastroFuncionariosView().setVisible(true);
 			}
 		});
 		mnNewMenu_1.add(mntmFuncionario);

@@ -1,27 +1,27 @@
 package views;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.ButtonGroup;
-import javax.swing.border.EtchedBorder;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class CadastroTurma extends JFrame {
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.table.DefaultTableModel;
+
+public class AlunosVSMateriaView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldTurma;
@@ -35,7 +35,7 @@ public class CadastroTurma extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastroTurma frame = new CadastroTurma();
+					AlunosVSMateriaView frame = new AlunosVSMateriaView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class CadastroTurma extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroTurma() {
+	public AlunosVSMateriaView() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 523, 498);
 		contentPane = new JPanel();
@@ -159,13 +159,13 @@ public class CadastroTurma extends JFrame {
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int i = JOptionPane.showConfirmDialog(btnExcluir, "Confirmar exlução do registro?");
+				int i = JOptionPane.showConfirmDialog(btnExcluir, "Confirmar exluï¿½ï¿½o do registro?");
 				if(i == JOptionPane.YES_OPTION) {
 					//chamar o evento delete controller
 				    System.out.println("Clicou em Sim");
 				}
 				else if(i == JOptionPane.NO_OPTION) {
-				    System.out.println("Clicou em Não");
+				    System.out.println("Clicou em Nï¿½o");
 				}
 				else if(i == JOptionPane.CANCEL_OPTION) {
 				    System.out.println("Clicou em Cancel");

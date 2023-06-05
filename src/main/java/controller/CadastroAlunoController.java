@@ -6,15 +6,15 @@ import controller.helper.CadastroAlunoHelper;
 import modelo.Usuario;
 import modelo.enums.TipoUsuario;
 import persistencia.UsuarioDao;
-import views.CadastroAluno;
+import views.CadastroAlunoView;
 
 public class CadastroAlunoController {
 	
-	private final CadastroAluno view;
+	private final CadastroAlunoView view;
 	private final CadastroAlunoHelper helper;
 	
 	
-	public CadastroAlunoController(CadastroAluno view) {
+	public CadastroAlunoController(CadastroAlunoView view) {
 		this.view = view;
 		this.helper = new CadastroAlunoHelper(view);
 		

@@ -92,7 +92,7 @@ public class LoginSenha extends JFrame {
 		JButton btnEsqueciaSenha = new JButton("Esqueci a senha");
 		btnEsqueciaSenha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new RecuperaSenha().setVisible(true);
+				new RecuperaSenhaView().setVisible(true);
 			}
 		});
 		btnEsqueciaSenha.setBounds(66, 124, 188, 23);

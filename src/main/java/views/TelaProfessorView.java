@@ -24,7 +24,7 @@ import javax.swing.JLabel;
 import javax.persistence.EntityManager;
 import javax.swing.ImageIcon;
 
-public class TelaProfessor extends JFrame {
+public class TelaProfessorView extends JFrame {
 
 	private EntityManager em = JpaUtil.getEntityManager();
 	private JPanel contentPane;
@@ -37,7 +37,7 @@ public class TelaProfessor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaProfessor frame = new TelaProfessor();
+					TelaProfessorView frame = new TelaProfessorView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class TelaProfessor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaProfessor() {
+	public TelaProfessorView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 732, 484);
 
@@ -68,7 +68,7 @@ public class TelaProfessor extends JFrame {
 		JMenuItem mntmAluno = new JMenuItem("Aluno(a)");
 		mntmAluno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new CadastroAluno().setVisible(true);
+				new AlunosVSMateriaView().setVisible(true);
 				
 				JOptionPane.showMessageDialog(null,"Parabens PROFESSOR");
 			}
@@ -78,7 +78,7 @@ public class TelaProfessor extends JFrame {
 		JMenuItem mntmTurma = new JMenuItem("Turma");
 		mntmTurma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new CadastroTurma().setVisible(true);
+				new AlunosVSMateriaView().setVisible(true);
 			}
 		});
 		mnNewMenu_1.add(mntmTurma);
@@ -86,7 +86,7 @@ public class TelaProfessor extends JFrame {
 		JMenuItem mntmFuncionario = new JMenuItem("Funcionario(a)");
 		mntmFuncionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new CadastroFuncionarios().setVisible(false);
+				new CadastroFuncionariosView().setVisible(false);
 			}
 		});
 		mnNewMenu_1.add(mntmFuncionario);
